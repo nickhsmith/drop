@@ -12,10 +12,10 @@
 #'    - tmpdir: '`sm drop.getTmpDir()`'
 #'    - htmlDir: '`sm config["htmlOutputPath"] + "/AberrantExpression"`'
 #'    - odsFiles: '`sm expand(parser.getProcResultsDir() +
-#'                  "/aberrant_expression/{annotation}/outrider/{dataset}/ods.Rds",
+#'                  "/aberrant_expression/{annotation}/expression/{dataset}/ods.Rds",
 #'                  annotation=annotations, dataset=datasets)`'
 #'    - resultTables: '`sm expand(parser.getProcResultsDir() +
-#'                      "/aberrant_expression/{annotation}/outrider/" +
+#'                      "/aberrant_expression/{annotation}/expression/" +
 #'                      "{dataset}/OUTRIDER_results.tsv",
 #'                      annotation=annotations, dataset=datasets)`'
 #'  input:
