@@ -112,6 +112,8 @@ class ConfigHelper:
             setKey(config, ["aberrantExpression"], "groups", None, verbose=VERBOSE)
             setKey(config, ["aberrantExpression"], "padjCutoff", .05, verbose=VERBOSE)
             setKey(config, ["aberrantExpression"], "zScoreCutoff", 0, verbose=VERBOSE)
+            setKey(config, ["aberrantExpression", "dassie"], "tssWindow", 500)
+            setKey(config, ["aberrantExpression", "dassie"], "pasWindow", 1000)
         
         # aberrant splicing
         if self.method == "AS" or self.method is None:
@@ -147,9 +149,20 @@ class ConfigHelper:
         return config
     
     def setKey(self, dict_, sub, key, default, verbose=False):
+        """
+        params:
+            dict_: nested dictionary
+            sub: list of keys linking to internal dictionaries in order of nesting (outmost first)
+            key: key of the innermost dictionary to be set
+            default: default value if value is None
+        """
+        # recursively move through dictionaries
         if sub is not None:
             for x in sub:
+                if x not in dict_:
+                    dict_[x] = {}
                 dict_ = dict_[x]
+        # set innermost key
         if key not in dict_ or dict_[key] is None:
             logger.debug(f'{key} not in config{sub}, using default')
             dict_[key] = default
