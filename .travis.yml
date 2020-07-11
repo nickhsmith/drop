@@ -13,7 +13,7 @@ env:
     - PROJECT_DIR="${HOME}/project"
     - MINICONDA_DIR="${HOME}/miniconda"
     - CONDA_SCRIPT="${MINICONDA_DIR}/etc/profile.d/conda.sh"
-    - R_LIBS_USER="${MINICONDA_DIR}/envs/${DROP_ENV}/lib/R/library"
+    - R_LIBS_USER="${MINICONDA_DIR}/envs/drop_env/lib/R/library"
     - TAR="/bin/tar"
     - BLD_DIR=${HOME}/bld-dir
 
@@ -31,8 +31,8 @@ install:
   - travis_wait 30 conda build conda.recipe --output-folder $BLD_DIR
   - conda config --add channels "file://${BLD_DIR}"
   - conda config --get channels
-  - conda create -q -n $DROP_ENV python=$TRAVIS_PYTHON_VERSION $PACKAGE_NAME
-  - conda activate $DROP_ENV
+  - conda create -q -n drop_env python=$TRAVIS_PYTHON_VERSION $PACKAGE_NAME
+  - conda activate drop_env
   - java -version
   - gatk --help
   - samtools --version
@@ -53,4 +53,4 @@ script: true
   - snakemake exportCounts --cores 2
   
 after_success:
-  - conda env remove -n $DROP_ENV
+  - conda env remove -n drop_env
