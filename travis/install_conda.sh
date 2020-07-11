@@ -15,7 +15,5 @@ else
     hash -r
     conda config --set always_yes yes --set changeps1 no
     conda update conda 
-    python --version
-    which python
 fi
 

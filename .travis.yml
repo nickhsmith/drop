@@ -18,13 +18,12 @@ env:
     - BLD_DIR=${HOME}/bld-dir
 
 python:
-  - "3.6.7"
+  - "3.7"
 
 install:
   - cd $DROP_DIR
   - bash travis/install_conda.sh
   - source $CONDA_SCRIPT
-  - conda install python=$TRAVIS_PYTHON_VERSION
   - conda install conda-build
   - conda config --add channels conda-forge
   - conda config --add channels bioconda
