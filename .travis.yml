@@ -24,12 +24,11 @@ install:
   - cd $DROP_DIR
   - bash travis/install_conda.sh
   - source $CONDA_SCRIPT
-  - conda config --add channels anaconda
+  - conda install python=$TRAVIS_PYTHON_VERSION
+  - conda install conda-build
   - conda config --add channels conda-forge
   - conda config --add channels bioconda
   - conda config --add channels mumichae
-  - conda install conda-build
-  - conda install python=$TRAVIS_PYTHON_VERSION
   - travis_wait 30 conda build conda.recipe --output-folder $BLD_DIR
   - conda config --add channels "file://${BLD_DIR}"
   - conda config --get channels

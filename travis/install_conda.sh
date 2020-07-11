@@ -2,8 +2,7 @@
 set -e
 
 cd $HOME
-#CONDA_URL="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-CONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-4.6.14-Linux-x86_64.sh"
+CONDA_URL="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 
 if [ -d $MINICONDA_DIR ] && [ -e $CONDA_SCRIPT ]
 then
@@ -15,6 +14,7 @@ else
     source $CONDA_SCRIPT
     hash -r
     conda config --set always_yes yes --set changeps1 no
+    conda update conda 
     python --version
     which python
 fi
