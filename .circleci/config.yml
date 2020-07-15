@@ -14,7 +14,7 @@ jobs:
           command: |
             conda config --set always_yes yes --set changeps1 no
             conda update -q conda
-            conda install conda-build
+            conda install python=3.7 conda-build
             conda config --add channels bioconda
             conda config --add channels conda-forge
       - run:
@@ -23,15 +23,13 @@ jobs:
             conda build conda.recipe --output-folder=${HOME}/build
             conda config --add channels "file://${HOME}/build"
       - run:
-          name: Install package
-          command: conda create -q -n drop drop
-      - run:
-          name: Initialize demo
+          name: Install and run package
           command: |
-            conda activate drop
             cd ~
             mkdir project
             cd project
+            conda create -q -n drop drop
+            conda activate drop
             drop demo
             snakemake -n
 
