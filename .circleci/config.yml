@@ -9,6 +9,8 @@ jobs:
       - image: continuumio/anaconda3:latest
     steps:
       - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
       - run:
           name: Setup conda
           command: |
@@ -20,18 +22,27 @@ jobs:
       - run:
           name: Build conda package
           command: |
-            conda build conda.recipe --output-folder=${HOME}/build
-            conda config --add channels "file://${HOME}/build"
+            conda build conda.recipe --output-folder=~/conda_build
+            conda config --add channels "file://~/conda_build"
       - run:
-          name: Install and run package
-          command: |
-            cd ~
-            mkdir project
-            cd project
+         name: Install
+         command: |
             conda create -q -n drop drop
             conda activate drop
+      - run:
+          name: Set up Demo
+          command: |
+            mkdir -p ~/drop_demo
+            cd ~/drop_demo
             drop demo
+      - run:
+          name: Run pipeline
+          command: |
             snakemake -n
+            snakemake aberrantExpression
+            snakemake aberrantSplicing
+            snakemake mae
+            snakemake
 
 workflows:
   main:
