@@ -24,21 +24,21 @@ jobs:
           command: |
             conda build conda.recipe --output-folder=${HOME}/conda_build
             conda config --add channels "file://${HOME}/conda_build"
-      - run: conda install drop
+      - run: conda create -n drop python=3.7 drop
       - run:
           name: Set up Demo
           command: |
             mkdir -p ~/drop_demo
             cd ~/drop_demo
-            drop demo
+            conda run -n drop drop demo
       - run:
           name: Run pipeline
           command: |
-            snakemake -n
-            snakemake aberrantExpression
-            snakemake aberrantSplicing
-            snakemake mae
-            snakemake
+            conda run -n drop snakemake -n
+            conda run -n drop snakemake aberrantExpression
+            conda run -n drop snakemake aberrantSplicing
+            conda run -n drop snakemake mae
+            conda run -n drop snakemake
 
 workflows:
   main:
