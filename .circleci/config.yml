@@ -22,12 +22,12 @@ jobs:
       - run:
           name: Build conda package
           command: |
-            conda build conda.recipe --output-folder=~/conda_build
-            conda config --add channels "file://~/conda_build"
+            conda build conda.recipe --output-folder=${HOME}/conda_build
+            conda config --add channels "file://${HOME}/conda_build"
       - run:
          name: Install
          command: |
-            conda create -q -n drop drop
+            conda create -q -n drop python=3.7 drop
             conda activate drop
       - run:
           name: Set up Demo
