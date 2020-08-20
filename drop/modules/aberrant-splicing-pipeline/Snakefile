@@ -1,15 +1,25 @@
-WORKDIR = cfg.AS.getWorkdir(str_=False)
+AS_WORKDIR = cfg.AS.getWorkdir(str_=False)
+
+AS_index_name = "aberrant-splicing-pipeline_index.html"
+AS_index_input, AS_index_output = wbuild.createIndex.createIndexRule(
+    scriptsPath=str(AS_WORKDIR),
+    index_name=AS_index_name
+)
 
 rule aberrantSplicing:
-    input:
-        expand(
-            cfg.getHtmlFromScript(WORKDIR / "Counting" / "DatasetsF.R"),
-            annotation=cfg.getGeneVersions()
-        ),
-        expand(
-            cfg.getHtmlFromScript(WORKDIR / "FRASER" / "Datasets.R"),
-            annotation=cfg.getGeneVersions()
-        )
+    input: AS_index_input
+    output: AS_index_output
+    run:
+        wbuild.createIndex.ci(str(AS_WORKDIR), AS_index_name)
+#    input:
+#        expand(
+#            cfg.getHtmlFromScript(WORKDIR / "Counting" / "DatasetsF.R"),
+#            annotation=cfg.getGeneVersions()
+#        ),
+#        expand(
+#            cfg.getHtmlFromScript(WORKDIR / "FRASER" / "Datasets.R"),
+#            annotation=cfg.getGeneVersions()
+#        )
 
 rulegraph_filename = f'{config["htmlOutputPath"]}/AS_rulegraph'
 rule aberrantSplicing_rulegraph:

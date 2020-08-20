@@ -20,9 +20,9 @@ include: cfg.MAE.getWorkdir() + "/Snakefile"
 
 rule all:
     input: 
-        rules.aberrantExpression.input,
-        rules.aberrantSplicing.input,
-        rules.mae.input,
+        rules.aberrantExpression.output,
+        rules.aberrantSplicing.output,
+        rules.mae.output,
         rules.Index.output,
         rules.aberrantExpression_rulegraph.output,
         rules.aberrantSplicing_rulegraph.output,
