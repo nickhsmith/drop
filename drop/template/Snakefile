@@ -15,12 +15,18 @@ drop.installRPackages(cfg)
 sa = cfg.sampleAnnotation
 config = cfg.config_dict # legacy
 
+
 include: drop.utils.getWBuildSnakefile()
 include: cfg.AE.getWorkdir() + "/Snakefile"
 include: cfg.AS.getWorkdir() + "/Snakefile"
 include: cfg.MAE.getWorkdir() + "/Snakefile"
 include: cfg.RVC.getWorkdir() + "/Snakefile"
 
+
+
+# don't allow the dataset wildcard to contain '--' as this is a delimter
+wildcard_constraints:
+    dataset="((?!--).)*"
 
 rule all:
     input: 

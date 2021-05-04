@@ -1,4 +1,4 @@
-RNA_ID	RNA_BAM_FILE	DNA_VCF_FILE	DNA_ID	DROP_GROUP	PAIRED_END	COUNT_MODE	COUNT_OVERLAPS	STRAND	HPO_TERMS	GENE_COUNTS_FILE	ANNOTATION	RNA_VARIANT_GROUP
+RNA_ID	RNA_BAM_FILE	DNA_VCF_FILE	DNA_ID	DROP_GROUP	PAIRED_END	COUNT_MODE	COUNT_OVERLAPS	STRAND	HPO_TERMS	GENE_COUNTS_FILE	GENE_ANNOTATION	RNA_VARIANT_GROUP	GENOME
 HG00096.1.M_111124_6	Data/rna_bam/HG00096.1.M_111124_6_chr21.bam	Data/dna_vcf/demo_chr21.vcf.gz	HG00096	outrider,mae	TRUE	IntersectionStrict	TRUE	no	HP:0009802,HP:0010896	""	""	batch_0
 HG00103.4.M_120208_3	Data/rna_bam/HG00103.4.M_120208_3_chr21.bam	Data/dna_vcf/demo_chr21.vcf.gz	HG00103	outrider,mae	TRUE	IntersectionStrict	TRUE	no	HP:0004582,HP:0031959	""	""	batch_0
 HG00106.4.M_120208_5	Data/rna_bam/HG00106.4.M_120208_5_chr21.bam	Data/dna_vcf/demo_chr21.vcf.gz	HG00106	outrider,import_exp	TRUE	IntersectionStrict	TRUE	no	HP:0002895,HP:0006731	""	""	batch_0
@@ -21,4 +21,3 @@ HG00150.4.M_120208_7_trunc	Data/rna_bam/HG00150.4.M_120208_7_chr21.bam_trunc.bam
 HG00176.4.M_120208_2_trunc	Data/rna_bam/HG00176.4.M_120208_2_chr21.bam_trunc.bam	Data/dna_vcf/demo_chr21.vcf.gz	HG00176	fraser	TRUE	IntersectionStrict	TRUE	no	HP:0005215,HP:0010234	""	""	batch_6
 HG00178.4.M_120208_8	""	""	""	import_exp	""	""	""	""	""	Data/external_geneCounts.tsv.gz	v29	batch_6
 HG00181.4.M_120208_4	""	""	""	import_exp	""	""	""	""	""	Data/external_geneCounts.tsv.gz	v29	batch_6
-
