@@ -1,0 +1,5 @@
+wbuild>=1.8.0
+python-dateutil
+pandoc
+graphviz
+pandas>=0.13
